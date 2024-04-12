@@ -21,7 +21,7 @@ int main(void)
 
 int is_little_endian()
 {
-    unsigned short x = 1;
+    unsigned short x = 1;   //use short as it is guaranteed to be min 2 bytes
     byte_pointer ptr = (byte_pointer) &x;
 
     // This code is just for logging:

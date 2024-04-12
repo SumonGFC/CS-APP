@@ -12,7 +12,7 @@ int is_little_endian();
 
 int main(void)
 {
-    if (is_little_endian() == 0)
+    if (is_little_endian())
         printf("This machine is little-endian\n");
     else
         printf("This machine is big-endian\n");
@@ -23,12 +23,13 @@ int is_little_endian()
 {
     unsigned short x = 1;
     byte_pointer ptr = (byte_pointer) &x;
-    unsigned int i;
 
-    printf("Byte representation of unsigned short x = 1: ");
+    // This code is just for logging:
+    unsigned int i;
+    printf("Byte representation of unsigned short x = 1: 0x ");
     for (i = 0; i < sizeof(unsigned short); i++)
         printf("%.2x ", *(ptr + i));
     printf("\n");
 
-    return !(*ptr);
+    return *ptr;    // will point to 1 if little, 0 if big
 }
